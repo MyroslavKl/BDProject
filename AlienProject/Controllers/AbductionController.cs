@@ -35,6 +35,25 @@ namespace AlienProject.Controllers
             return View(abductedPeople);
         }
 
+        [HttpGet]
+        public IActionResult FindAlien()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult FindAlien(string humanName, int minAbductionCount, DateTime fromDate, DateTime toDate)
+        {
+            var abduct = GeneretingAbductionTable();
+            var abductedPeople = abduct
+                .Where(a => a.HumanName == humanName && a.AbductionDate >= fromDate && a.AbductionDate <= toDate)
+                .GroupBy(a => a.AlienName)
+                .Where(g => g.Count() >= minAbductionCount)
+                .Select(g => g.Key)
+                .ToList();
+
+            return View(abductedPeople);
+        }
+
 
 
         public IEnumerable<AbductionViewModel> GeneretingAbductionTable() {

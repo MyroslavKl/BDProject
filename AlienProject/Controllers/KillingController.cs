@@ -13,6 +13,28 @@ namespace AlienProject.Controllers
         }
         public IActionResult Killing()
         {
+            var viewModelList = Generate();
+            return View(viewModelList); ;
+        }
+
+        [HttpGet]
+        public IActionResult FindAlien()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult FindAlien(string humanName,DateTime fromDate, DateTime toDate)
+        {
+            var kills = Generate();
+            var killedAlien = kills
+                .Where(a => a.HumanName == humanName && a.KillingDate >= fromDate && a.KillingDate <= toDate)
+                .ToList();
+
+            return View(killedAlien);
+        }
+
+
+        public IEnumerable<KillingViewModel> Generate() {
             var query = from killings in _context.Killings
                         join alien in _context.Aliens on killings.AlienId equals alien.AlienId
                         join human in _context.Humans on killings.HumanId equals human.HumanId into humanGroup
@@ -46,7 +68,7 @@ namespace AlienProject.Controllers
                 HumanBirthDate = result.HumanBirthDate,
                 HumanEmail = result.HumanEmail,
             }).ToList();
-            return View(viewModelList);
+            return viewModelList;
         }
     }
 }
