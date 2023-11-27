@@ -1,0 +1,51 @@
+﻿@model List<string>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Abducted People</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Find Abducted People</h1>
+
+        <form asp-controller="Abduction" asp-action="FindAllHumans" method="post" class="mb-4">
+            <div class="form-group">
+                <label for="minAbductionCount">Minimum Abduction Count:</label>
+                <input type="number" name="minAbductionCount" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="date" name="fromDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="date" name="toDate" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Find Abducted People</button>
+            <a asp-action="Abduction">Back</a>
+        </form>
+
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var person in Model)
+                    {
+                        <li>@person</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="mt-4">No abducted people found.</p>
+            }
+        }
+    </div>
+
+</body>
+</html>
+

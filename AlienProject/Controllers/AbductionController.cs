@@ -101,5 +101,28 @@ namespace AlienProject.Controllers
             return View(alienNames);
         }
 
+        [HttpGet]
+        public IActionResult FindAllHumans()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult FindAllHumans(int minAbductionCount, DateTime fromDate, DateTime toDate)
+        {
+            Generate generate = new(_context);
+            var data = generate.GeneretingAbductionTable();
+
+            var humansAbductedMultipleTimes = data
+                .Where(abduction => abduction.AbductionDate >= fromDate && abduction.AbductionDate <= toDate)
+                .GroupBy(abduction => abduction.HumanId)
+                .Where(group => group.Count() >= minAbductionCount)
+                .Select(group => data.First(abduction => abduction.HumanId == group.Key))
+                .ToList();
+
+            var humanNames = humansAbductedMultipleTimes.Select(human => human.HumanName).ToList();
+
+            return View(humanNames);
+
+        }
     }
 }
