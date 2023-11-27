@@ -13,10 +13,35 @@ namespace AlienProject.Controllers
         }
         public IActionResult Abduction()
         {
+            var viewModelList = GeneretingAbductionTable();
+            return View(viewModelList);
+        }
+        [HttpGet]
+        public IActionResult Find()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Find(string alienName, int minAbductionCount, DateTime fromDate, DateTime toDate)
+        {
+            var abduct = GeneretingAbductionTable();
+            var abductedPeople = abduct
+                .Where(a => a.AlienName == alienName && a.AbductionDate >= fromDate && a.AbductionDate <= toDate)
+                .GroupBy(a => a.HumanName)
+                .Where(g => g.Count() >= minAbductionCount)
+                .Select(g => g.Key)
+                .ToList();
+
+            return View(abductedPeople);
+        }
+
+
+
+        public IEnumerable<AbductionViewModel> GeneretingAbductionTable() {
             var query = from abduct in _context.Abductions
                         join alien in _context.Aliens on abduct.AlienId equals alien.AlienId
                         join human in _context.Humans on abduct.HumanId equals human.HumanId into humanGroup
-                        from human in humanGroup.DefaultIfEmpty() 
+                        from human in humanGroup.DefaultIfEmpty()
                         select new
                         {
                             AbducttionId = abduct.AbductionId,
@@ -33,7 +58,7 @@ namespace AlienProject.Controllers
                             HumanPassword = human != null ? human.Password : null
                         };
 
-            var viewModelList = query.Select(result => new AbductionViewModel
+            IEnumerable<AbductionViewModel> viewModelList = query.Select(result => new AbductionViewModel
             {
                 AbductionId = result.AbducttionId,
                 AbductionDate = result.AbductionDate,
@@ -46,7 +71,9 @@ namespace AlienProject.Controllers
                 HumanBirthDate = result.HumanBirthDate,
                 HumanEmail = result.HumanEmail,
             }).ToList();
-            return View(viewModelList);
+            return viewModelList;
         }
+
+
     }
 }
