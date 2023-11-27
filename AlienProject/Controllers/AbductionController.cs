@@ -79,7 +79,27 @@ namespace AlienProject.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult FindDifferentAliens()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult FindDifferentAliens(int minAbductionCount, DateTime fromDate, DateTime toDate)
+        {
+            Generate generate = new(_context);
+            var data = generate.GeneretingAbductionTable();
+            var aliensAbductingMultiplePeople = data
+                .Where(abduction => abduction.AbductionDate >= fromDate && abduction.AbductionDate <= toDate)
+                .GroupBy(abduction => abduction.AlienId)
+                .Where(group => group.Count() >= minAbductionCount)
+                .Select(group => data.First(abduction => abduction.AlienId == group.Key))
+                .ToList();
 
+            var alienNames = aliensAbductingMultiplePeople.Select(alien => alien.AlienName).ToList();
+
+            return View(alienNames);
+        }
 
     }
 }
