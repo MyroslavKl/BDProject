@@ -1,0 +1,37 @@
+﻿@model List<ExperimentViewModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiment</title>
+</head>
+    <body>
+
+        <h2>Experiments</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Experiment Date</th>
+                    <th>Alien Name</th>
+                    <th>Alien Birth Date</th>
+                    <th>Human Name</th>
+                    <th>Human Birth Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ExperimentDate.ToShortDateString()</td>
+                        <td>@item.AlienName</td>
+                        <td>@(item.AlienBirthDate.HasValue ? item.AlienBirthDate.Value.ToShortDateString() : "-")</td>
+                        <td>@item.HumanName</td>
+                        <td>@(item.HumanBirthDate.HasValue ? item.HumanBirthDate.Value.ToShortDateString() : "-")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </body>
+</html>

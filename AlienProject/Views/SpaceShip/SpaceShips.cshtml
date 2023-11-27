@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AlienProject.Models.Spaceshipp>
+
+@{
+    ViewData["Title"] = "SpaceShips";
+}
+
+<h1>SpaceShips</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SpaceshipName)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpaceshipName)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
