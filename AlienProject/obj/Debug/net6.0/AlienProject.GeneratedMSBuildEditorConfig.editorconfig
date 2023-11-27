@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/FindPeople.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BhY2VTaGlwXEZpbmRQZW9wbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/SpaceShips.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BhY2VTaGlwXFNwYWNlU2hpcHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
