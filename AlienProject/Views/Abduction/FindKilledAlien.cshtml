@@ -1,0 +1,41 @@
+﻿@model List<string>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Abducted and Killed Aliens</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-4 mb-4">Find Killed Aliens</h1>
+
+        <form asp-controller="Abduction" asp-action="FindKilledAlien" method="post" class="mb-4">
+            <div class="form-group">
+                <label for="alienName">Human Name:</label>
+                <input type="text" name="humanName" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Find Killed Aliens</button>
+            <a asp-action="Abduction">Back</a>
+        </form>
+
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <ul class="list-group">
+                    @foreach (var alienName in Model)
+                    {
+                        <li>@alienName</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="mt-4">No abducted and killed aliens found for the specified human.</p>
+            }
+        }
+    </div>
+
+</body>
+</html>

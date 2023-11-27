@@ -58,6 +58,28 @@ namespace AlienProject.Controllers
             return View(abductedPeople);
         }
 
+        [HttpGet]
+        public IActionResult FindKilledAlien()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult FindKilledAlien(string humanName)
+        {
+            Generate generate = new(_context);
+            var abduct = generate.GeneretingAbductionTable();
+            var killed = generate.GenerateKillingTable();
+            var abductedAndKilledAliens = abduct
+                .Where(visit => visit.HumanName == humanName)
+                .Where(alien => killed.Any(killing => killing.AlienId == alien.AlienId && killing.HumanName == humanName));
+
+            var alienNames = abductedAndKilledAliens.Select(alien => alien.AlienName).ToList();
+
+            return View(alienNames);
+        }
+
+
+
 
     }
 }
