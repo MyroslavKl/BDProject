@@ -63,5 +63,21 @@ namespace AlienProject.Controllers
             return shipsInfo;
         }
 
+        [HttpGet]
+        public IActionResult Add() {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Spaceshipp spaceship)
+        {
+            if (spaceship == null)
+            {
+                return View();
+            }
+            _context.Spaceshipps.Add(spaceship);
+            _context.SaveChanges(); 
+            return RedirectToAction("SpaceShips");
+        }
     }
 }

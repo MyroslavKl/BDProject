@@ -10,6 +10,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.AlienId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
             <th>
@@ -23,13 +26,20 @@
     <tbody>
 @foreach (var item in Model) {
             <tr>
+                <td>@item.AlienId</td>
                 <td>@item.Name</td>
                 <td>@(item.BirthDate.HasValue ? item.BirthDate.Value.ToShortDateString() : "-")</td>
                 <td>@item.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AlienId">Edit</a>
+                </td>
             </tr>
 }
     </tbody>
 </table>
+<a asp-action="Add">
+    Add
+</a>
 <ul>
     <li>
         <a asp-action="FindCommon">Find Common Experiments and Excursions</a>

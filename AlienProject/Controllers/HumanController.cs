@@ -16,6 +16,24 @@ namespace AlienProject.Controllers
             var humans= _context.Humans;
             return View(humans);
         }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Human human)
+        {
+            if (human == null)
+            {
+                return View();
+            }
+
+            _context.Humans.Add(human);
+            _context.SaveChanges();
+            return RedirectToAction("Aliens");
+        }
 
     }
 }

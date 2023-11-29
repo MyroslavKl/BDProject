@@ -68,5 +68,41 @@ namespace AlienProject.Controllers
             return View(commonActivities);
 
         }
+        [HttpGet]
+        public IActionResult Add() {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Alien alien) {
+            if (alien == null)
+            {
+                return View();
+            }
+
+
+            _context.Aliens.Add(alien);
+            _context.SaveChanges();
+            return RedirectToAction("Aliens");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            var std = _context.Aliens.Where(s => s.AlienId == Id).FirstOrDefault();
+
+            return View(std);
+
+        }
+        [HttpPost]
+        public IActionResult Edit(Alien std)
+        {
+            if (std == null) {
+                return NotFound();
+            }
+            _context.Aliens.Update(std);
+            _context.SaveChanges();
+            return RedirectToAction("Aliens");
+        }
     }
 }

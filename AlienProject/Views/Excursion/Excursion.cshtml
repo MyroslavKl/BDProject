@@ -12,6 +12,7 @@
     <table class="table">
         <thead>
             <tr>
+                <th>Excursion Id</th>
                 <th>Excursion Date</th>
                 <th>Alien Name</th>
                 <th>Alien Birth Date</th>
@@ -23,6 +24,7 @@
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@item.ExcursionId</td>
                     <td>@item.ExcursionDate.ToShortDateString()</td>
                     <td>@item.AlienName</td>
                     <td>@(item.AlienBirthDate.HasValue ? item.AlienBirthDate.Value.ToShortDateString() : "-")</td>

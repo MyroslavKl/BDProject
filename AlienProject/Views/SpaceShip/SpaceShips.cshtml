@@ -10,6 +10,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.SpaceshipId)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.SpaceshipName)
             </th>
         </tr>
@@ -17,6 +20,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SpaceshipId)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SpaceshipName)
             </td>
@@ -24,6 +30,7 @@
 }
     </tbody>
 </table>
+<a asp-action="Add">Add</a>
 <ul>
     <li><a asp-action="FindPeople">Find People</a></li>
     <li><a asp-action="ExperimentsPerShip">Find Experiment</a></li>
