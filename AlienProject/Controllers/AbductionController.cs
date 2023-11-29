@@ -12,12 +12,14 @@ namespace AlienProject.Controllers
         {
             this._context = context;
         }
+
         public IActionResult Abduction()
         {
             Generate generate = new(_context);
             var viewModelList = generate.GeneretingAbductionTable();
             return View(viewModelList);
         }
+
         [HttpGet]
         public IActionResult Find()
         {
@@ -43,6 +45,7 @@ namespace AlienProject.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public IActionResult FindAlien(string humanName, int minAbductionCount, DateTime fromDate, DateTime toDate)
         {
@@ -63,6 +66,8 @@ namespace AlienProject.Controllers
         {
             return View();
         }
+
+
         [HttpPost]
         public IActionResult FindKilledAlien(string humanName)
         {

@@ -39,7 +39,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Excursion ID</th>
                             <th>Excursion Date</th>
                             <th>Alien Name</th>
                             <th>Human Name</th>
@@ -50,7 +49,6 @@
                         @foreach (var excursionInfo in Model)
                         {
                             <tr>
-                                <td>@excursionInfo.ExcursionId</td>
                                 <td>@excursionInfo.ExcursionDate.ToShortDateString()</td>
                                 <td>@excursionInfo.AlienName</td>
                                 <td>@excursionInfo.HumanName</td>

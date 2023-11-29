@@ -36,7 +36,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Activity ID</th>
                         <th>Activity Date</th>
                         <th>Human Name</th>
                         <th>Alien Name</th>
@@ -47,8 +46,7 @@
                     @foreach (var activity in Model)
                     {
                         <tr>
-                            <td>@activity.ActivityId</td>
-                            <td>@activity.ActivityDate</td>
+                            <td>@activity.ActivityDate.ToShortDateString()</td>
                             <td>@activity.HumanName</td>
                             <td>@activity.AlienName</td>
                             <td>@activity.Type</td>
