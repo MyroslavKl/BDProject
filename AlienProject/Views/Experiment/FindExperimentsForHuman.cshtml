@@ -1,0 +1,69 @@
+﻿@model List<AlienProject.Additional.ExperimentInfo>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiments for Person</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Experiments for Person</h1>
+
+        <form asp-controller="Experiment" asp-action="FindExperimentsForHuman" method="post" class="mb-4">
+            <div class="form-group">
+                <label for="personName">Person Name:</label>
+                <input type="text" name="personName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="minAliensCount">Minimum Aliens Count:</label>
+                <input type="number" name="minAliensCount" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="date" name="fromDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="date" name="toDate" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Find Experiments</button>
+            <a asp-action="Experiments">Back</a>
+        </form>
+
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Experiment ID</th>
+                            <th>Experiment Date</th>
+                            <th>Alien Count</th>
+                            <!-- Add additional table headers as needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var experimentInfo in Model)
+                        {
+                            <tr>
+                                <td>@experimentInfo.ExperimentId</td>
+                                <td>@experimentInfo.ExperimentDate.ToShortDateString()</td>
+                                <td>@experimentInfo.AlienCount</td>
+                                <!-- Add additional table cells as needed -->
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="mt-4">No experiments found for the specified criteria.</p>
+            }
+        }
+    </div>
+
+</body>
+</html>

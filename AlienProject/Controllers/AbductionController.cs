@@ -124,5 +124,33 @@ namespace AlienProject.Controllers
             return View(humanNames);
 
         }
+
+        [HttpGet]
+        public IActionResult AbductionsPerMonth()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AbductionsPerMonth(DateTime fromDate, DateTime toDate)
+        {
+            Dictionary<string, int> abductionsPerMonth = GetAbductionsPerMonth(fromDate, toDate);
+            return View(abductionsPerMonth);
+        }
+
+        private Dictionary<string, int> GetAbductionsPerMonth(DateTime fromDate, DateTime toDate)
+        {
+            var abductionsPerMonth = _context.Abductions
+                .Where(a => a.AbductionDate >= fromDate && a.AbductionDate <= toDate)
+                .GroupBy(a => new { a.AbductionDate.Year, a.AbductionDate.Month })
+                .Select(g => new
+                {
+                    MonthYear = $"{g.Key.Year}-{g.Key.Month:D2}",
+                    AbductionCount = g.Count()
+                })
+                .ToDictionary(x => x.MonthYear, x => x.AbductionCount);
+
+            return abductionsPerMonth;
+        }
     }
 }

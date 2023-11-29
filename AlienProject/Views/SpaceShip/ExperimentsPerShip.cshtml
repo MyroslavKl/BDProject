@@ -1,0 +1,62 @@
+﻿@model List<AlienProject.Additional.ShipInfo>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Experiments Per Ship</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Experiments Per Ship</h1>
+
+        <form asp-controller="SpaceShip" asp-action="ExperimentsPerShip" method="post" class="mb-4">
+            <div class="form-group">
+                <label for="alienName">Alien Name:</label>
+                <input type="text" name="alienName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="date" name="fromDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="date" name="toDate" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Get Experiments Per Ship</button>
+        </form>
+
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Ship ID</th>
+                            <th>Ship Name</th>
+                            <th>Experiment Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var shipInfo in Model)
+                        {
+                            <tr>
+                                <td>@shipInfo.ShipId</td>
+                                <td>@shipInfo.ShipName</td>
+                                <td>@shipInfo.ExperimentCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="mt-4">No ships found for the specified criteria.</p>
+            }
+        }
+    </div>
+
+</body>
+</html>

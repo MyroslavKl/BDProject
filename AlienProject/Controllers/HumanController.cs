@@ -16,5 +16,6 @@ namespace AlienProject.Controllers
             var humans= _context.Humans;
             return View(humans);
         }
+
     }
 }

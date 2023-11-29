@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJkdWN0aW9uXEFiZHVjdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/BDProject/AlienProject/AlienProject/Views/Abduction/AbductionsPerMonth.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJkdWN0aW9uXEFiZHVjdGlvbnNQZXJNb250aC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/BDProject/AlienProject/AlienProject/Views/Abduction/Find.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWJkdWN0aW9uXEZpbmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,12 +52,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxpZW5cRmluZENvbW1vbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/BDProject/AlienProject/AlienProject/Views/Alien/FindExcursionsForAlien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxpZW5cRmluZEV4Y3Vyc2lvbnNGb3JBbGllbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/BDProject/AlienProject/AlienProject/Views/Excursion/Excursion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhjdXJzaW9uXEV4Y3Vyc2lvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/BDProject/AlienProject/AlienProject/Views/Experiment/Experiments.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpbWVudFxFeHBlcmltZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/BDProject/AlienProject/AlienProject/Views/Experiment/FindExperimentsForHuman.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZXJpbWVudFxGaW5kRXhwZXJpbWVudHNGb3JIdW1hbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/BDProject/AlienProject/AlienProject/Views/Home/Index.cshtml]
@@ -82,6 +94,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/BDProject/AlienProject/AlienProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/ExperimentsPerShip.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BhY2VTaGlwXEV4cGVyaW1lbnRzUGVyU2hpcC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/FindPeople.cshtml]

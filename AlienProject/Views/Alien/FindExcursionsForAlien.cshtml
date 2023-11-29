@@ -1,0 +1,70 @@
+﻿@model List<AlienProject.Additional.ExcursionInfo>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excursions for Alien</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mt-4 mb-4">Excursions for Alien</h1>
+
+        <form asp-controller="Alien" asp-action="FindExcursionsForAlien" method="post" class="mb-4">
+            <div class="form-group">
+                <label for="alienName">Alien Name:</label>
+                <input type="text" name="alienName" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="minPeopleCount">Minimum People Count:</label>
+                <input type="number" name="minPeopleCount" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="fromDate">From Date:</label>
+                <input type="date" name="fromDate" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="toDate">To Date:</label>
+                <input type="date" name="toDate" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Find Excursions</button>
+            <a asp-action="Aliens">Back</a>
+        </form>
+
+        @if (Model != null)
+        {
+            if (Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Excursion ID</th>
+                            <th>Excursion Date</th>
+                            <th>Alien Name</th>
+                            <th>Human Name</th>
+                            <th>People Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var excursionInfo in Model)
+                        {
+                            <tr>
+                                <td>@excursionInfo.ExcursionId</td>
+                                <td>@excursionInfo.ExcursionDate.ToShortDateString()</td>
+                                <td>@excursionInfo.AlienName</td>
+                                <td>@excursionInfo.HumanName</td>
+                                <td>@excursionInfo.PeopleCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p class="mt-4">No excursions found for the specified criteria.</p>
+            }
+        }
+    </div>
+</body>
+</html>
