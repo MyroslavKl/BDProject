@@ -34,37 +34,41 @@
             }
         </tbody>
     </table>
-    <ul>
-        <li>
-            <a asp-action="Find">
-                Find Abducted People
-            </a>
-        </li>
-        <li>
-            <a asp-action="FindAlien">
-                Find Alien
-            </a>
-        </li>
-        <li>
-            <a asp-action="FindKilledAlien">
-                Find Killed Alien By Abducted Human
-            </a>
-        </li>
-        <li>
-            <a asp-action="FindDifferentAliens">
-                Find different Aliens
-            </a>
-        </li>
-        <li>
-            <a asp-action="FindAllHumans">
-                Find All Humans
-            </a>
-        </li>
-        <li>
-            <a asp-action="AbductionsPerMonth">
-                Abductions Per Month
-            </a>
-        </li>
-    </ul>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <ul>
+            <li>
+                <a asp-action="Find">
+                    Find Abducted People
+                </a>
+            </li>
+            <li>
+                <a asp-action="FindAlien">
+                    Find Alien
+                </a>
+            </li>
+            <li>
+                <a asp-action="FindKilledAlien">
+                    Find Killed Alien By Abducted Human
+                </a>
+            </li>
+            <li>
+                <a asp-action="FindDifferentAliens">
+                    Find different Aliens
+                </a>
+            </li>
+            <li>
+                <a asp-action="FindAllHumans">
+                    Find All Humans
+                </a>
+            </li>
+            <li>
+                <a asp-action="AbductionsPerMonth">
+                    Abductions Per Month
+                </a>
+            </li>
+        </ul>
+    }
+   
 </body>
 </html>

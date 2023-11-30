@@ -12,7 +12,6 @@ namespace AlienProject.Controllers
         {
             this._context = context;
         }
-
         public IActionResult Humans()
         {
             var humans= _context.Humans;

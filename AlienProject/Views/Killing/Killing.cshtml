@@ -34,8 +34,11 @@
             }
         </tbody>
     </table>
-    <ul>
-        <li><a asp-action="FindAlien">Find Killed Alien</a></li>
-    </ul>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <ul>
+            <li><a asp-action="FindAlien">Find Killed Alien</a></li>
+        </ul>
+    }
 </body>
 </html>

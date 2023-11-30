@@ -36,5 +36,9 @@
         </table>
     </body>
 </html>
-<ul><li><a asp-action="FindExperimentsForHuman">Find Experiment</a></li></ul>
+@if (User.Identity.IsAuthenticated)
+{
+    <ul><li><a asp-action="FindExperimentsForHuman">Find Experiment</a></li></ul>
+}
+
 

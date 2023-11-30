@@ -36,4 +36,8 @@
     </table>
 </body>
 </html>
-<ul><li><a asp-action="FindExcursionsForAlien">Find Excursions For Aliens</a></li></ul>
+@if (User.Identity.IsAuthenticated)
+{
+    <ul><li><a asp-action="FindExcursionsForAlien">Find Excursions For Aliens</a></li></ul> 
+}
+
