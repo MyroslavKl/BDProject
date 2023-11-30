@@ -26,6 +26,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.SpaceshipName)
             </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SpaceshipId">Edit</a>
+                </td>
         </tr>
 }
     </tbody>

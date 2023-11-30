@@ -79,5 +79,26 @@ namespace AlienProject.Controllers
             _context.SaveChanges(); 
             return RedirectToAction("SpaceShips");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            var ship = _context.Spaceshipps.Where(s => s.SpaceshipId == Id).FirstOrDefault();
+
+            return View(ship);
+
+        }
+        [HttpPost]
+        public IActionResult Edit(Spaceshipp spaceshipp)
+        {
+            if (spaceshipp == null)
+            {
+                return NotFound();
+            }
+            _context.Spaceshipps.Update(spaceshipp);
+            _context.SaveChanges();
+            return RedirectToAction("SpaceShips");
+        }
+
     }
 }

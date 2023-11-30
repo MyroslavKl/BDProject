@@ -60,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxpZW5cRmluZENvbW1vbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/BDProject/AlienProject/AlienProject/Views/Authentication/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXV0aGVudGljYXRpb25cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/BDProject/AlienProject/AlienProject/Views/Excursion/Excursion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhjdXJzaW9uXEV4Y3Vyc2lvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -88,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVtYW5cQWRkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/BDProject/AlienProject/AlienProject/Views/Human/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVtYW5cRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/BDProject/AlienProject/AlienProject/Views/Human/Humans.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSHVtYW5cSHVtYW5zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -110,6 +118,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/Add.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BhY2VTaGlwXEFkZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3BhY2VTaGlwXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/BDProject/AlienProject/AlienProject/Views/SpaceShip/ExperimentsPerShip.cshtml]

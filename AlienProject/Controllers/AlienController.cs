@@ -89,18 +89,18 @@ namespace AlienProject.Controllers
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            var std = _context.Aliens.Where(s => s.AlienId == Id).FirstOrDefault();
+            var alien = _context.Aliens.Where(s => s.AlienId == Id).FirstOrDefault();
 
-            return View(std);
+            return View(alien);
 
         }
         [HttpPost]
-        public IActionResult Edit(Alien std)
+        public IActionResult Edit(Alien alien)
         {
-            if (std == null) {
+            if (alien == null) {
                 return NotFound();
             }
-            _context.Aliens.Update(std);
+            _context.Aliens.Update(alien);
             _context.SaveChanges();
             return RedirectToAction("Aliens");
         }

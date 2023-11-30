@@ -44,7 +44,5 @@ namespace AlienProject.Controllers
             return View(experimentsInfo);
         }
 
-
-
     }
 }

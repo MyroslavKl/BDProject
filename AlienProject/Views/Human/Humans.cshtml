@@ -31,6 +31,9 @@
                 <td>@item.Name</td>
                 <td>@(item.BirthDate.HasValue ? item.BirthDate.Value.ToShortDateString() : "-")</td>
                 <td>@item.Email</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.HumanId">Edit</a>
+                </td>
             </tr>
 }
     </tbody>

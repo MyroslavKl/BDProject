@@ -1,4 +1,5 @@
 ﻿using AlienProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AlienProject.Controllers
@@ -11,6 +12,7 @@ namespace AlienProject.Controllers
         {
             this._context = context;
         }
+
         public IActionResult Humans()
         {
             var humans= _context.Humans;
@@ -33,6 +35,26 @@ namespace AlienProject.Controllers
             _context.Humans.Add(human);
             _context.SaveChanges();
             return RedirectToAction("Aliens");
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            var human = _context.Humans.Where(s => s.HumanId == Id).FirstOrDefault();
+
+            return View(human);
+
+        }
+        [HttpPost]
+        public IActionResult Edit(Human human)
+        {
+            if (human == null)
+            {
+                return NotFound();
+            }
+            _context.Humans.Update(human);
+            _context.SaveChanges();
+            return RedirectToAction("Humans");
         }
 
     }
