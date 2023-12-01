@@ -58,5 +58,40 @@ namespace AlienProject.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login");
         }
+        [HttpGet("register")]
+        public IActionResult Register() {
+            return View();
+        }
+
+        [HttpPost("register")]
+        public IActionResult Register(string name,string email,DateTime birth,string password) {
+            Alien alien = new();
+            Human human = new();
+            if (email.Contains("alien"))
+            {
+                var lastElement = _context.Aliens.OrderByDescending(x => x.AlienId).FirstOrDefault();
+                alien.AlienId = lastElement.AlienId + 1;
+                alien.Name = name;
+                alien.Email = email;
+                alien.BirthDate = birth;
+                alien.Password = password;
+                _context.Aliens.Add(alien);
+                _context.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            else {
+                var lastElement = _context.Humans.OrderByDescending(x => x.HumanId).FirstOrDefault();
+                human.HumanId = lastElement.HumanId + 1;
+                human.Name = name;
+                human.Email = email;
+                human.BirthDate = birth;
+                human.Password = password;
+                _context.Humans.Add(human);
+                _context.SaveChanges();
+                return RedirectToAction("Login");
+            }
+
+            return RedirectToAction("Index","Home");
+        }
     }
 }

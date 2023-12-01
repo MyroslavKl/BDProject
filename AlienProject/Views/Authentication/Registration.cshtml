@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<h1>Registration</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form action="/login" method="post">
+            <input type="text" name="name" placeholder="Name" />
+            <input type="text" name="email" placeholder="email" />
+            <input type="date" name="BirthDay" placeholder="DateOfBirth" />
+            <input type="password" name="password" placeholder="Password" />
+            <input type="submit" value="register" />
+        </form>
+        </div>
+        </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
