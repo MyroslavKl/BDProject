@@ -19,7 +19,7 @@ namespace AlienProject.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Validate(string email,string password)
+        public async Task<IActionResult> Validate(string email, string password)
         {
             var human = _context.Humans
                .FirstOrDefault(u => u.Email == email && u.Password == password);
@@ -27,19 +27,19 @@ namespace AlienProject.Controllers
             var alien = _context.Aliens
                 .FirstOrDefault(u => u.Email == email && u.Password == password);
 
-            if(human!= null) {
+            if (human != null) {
                 var claims = new List<Claim>();
                 claims.Add(new Claim("email", email));
-                claims.Add(new Claim(ClaimTypes.Email,email));
+                claims.Add(new Claim(ClaimTypes.Email, email));
                 claims.Add(new Claim(ClaimTypes.Role, "Human"));
                 claims.Add(new Claim(ClaimTypes.NameIdentifier, email));
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
 
-                return RedirectToAction("Humans","Human");
+                return RedirectToAction("Humans", "Human");
             }
-            else if(alien!= null)
+            else if (alien != null)
             {
                 var claims = new List<Claim>();
                 claims.Add(new Claim("email", email));
@@ -49,9 +49,10 @@ namespace AlienProject.Controllers
                 var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                 var claimsPrincipal = new ClaimsPrincipal(claimsIdentity);
                 await HttpContext.SignInAsync(claimsPrincipal);
-                return RedirectToAction("Aliens","Alien");
+                return RedirectToAction("Aliens", "Alien");
             }
-            return RedirectToAction("Index","Home");
+            TempData["ErrorInput"] = "Error. Incorrect gmail or password. Try again";
+            return RedirectToAction("Login");
         }
 
         public async Task<IActionResult> Logout() {
@@ -64,34 +65,34 @@ namespace AlienProject.Controllers
         }
 
         [HttpPost("register")]
-        public IActionResult Register(string name,string email,DateTime birth,string password) {
+        public IActionResult Register(string name, string email, DateTime birth, string password) {
             Alien alien = new();
             Human human = new();
-            if (email.Contains("alien"))
-            {
-                var lastElement = _context.Aliens.OrderByDescending(x => x.AlienId).FirstOrDefault();
-                alien.AlienId = lastElement.AlienId + 1;
-                alien.Name = name;
-                alien.Email = email;
-                alien.BirthDate = birth;
-                alien.Password = password;
-                _context.Aliens.Add(alien);
-                _context.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            else {
-                var lastElement = _context.Humans.OrderByDescending(x => x.HumanId).FirstOrDefault();
-                human.HumanId = lastElement.HumanId + 1;
-                human.Name = name;
-                human.Email = email;
-                human.BirthDate = birth;
-                human.Password = password;
-                _context.Humans.Add(human);
-                _context.SaveChanges();
-                return RedirectToAction("Login");
-            }
-
-            return RedirectToAction("Index","Home");
+                if (email.Contains("alien"))
+                {
+                    var lastElement = _context.Aliens.OrderByDescending(x => x.AlienId).FirstOrDefault();
+                    alien.AlienId = lastElement.AlienId + 1;
+                    alien.Name = name;
+                    alien.Email = email;
+                    alien.BirthDate = birth;
+                    alien.Password = password;
+                    _context.Aliens.Add(alien);
+                    _context.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+                else if (!email.Contains("alien"))
+                {
+                    var lastElement = _context.Humans.OrderByDescending(x => x.HumanId).FirstOrDefault();
+                    human.HumanId = lastElement.HumanId + 1;
+                    human.Name = name;
+                    human.Email = email;
+                    human.BirthDate = birth;
+                    human.Password = password;
+                    _context.Humans.Add(human);
+                    _context.SaveChanges();
+                    return RedirectToAction("Login");
+                }
+            return RedirectToAction("Register");
         }
     }
 }

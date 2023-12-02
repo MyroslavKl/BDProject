@@ -1,6 +1,14 @@
 ﻿
+
+@{
+    var errorInput = TempData["ErrorInput"] as string;
+}
 <h1>Login</h1>
 
+@if (!string.IsNullOrEmpty(errorInput))
+{
+    <h4 class="alert-danger" style="padding:20px">@errorInput</h4>
+}
 <form action="/login" method="post">
     <input type = "text" name="email" placeholder="Email" />
     <input type="password" name="password" placeholder="Password" />
